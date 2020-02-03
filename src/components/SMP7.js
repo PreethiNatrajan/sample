@@ -25,14 +25,6 @@ export class SMP7 extends Component {
                 <li><Link to={'/Workflow'}>Workflow</Link></li>
                 <li><Link to={'/Css'}>Css</Link></li>
             </ul>
-            <Switch>
-            <Route path='/Model_Builder' component={ModelBuilder}/>
-            <Route path='/OverlayBuilder' component={OverlayBuilder}/>
-            <Route path='/Config_Manager' component={ConfigManager}/>
-            <Route path='/Workflow' component={Workflow}/>
-            <Route path='/Css' component={Css}/>
-            </Switch>
-            
             </div>
             </div>
             </Router>

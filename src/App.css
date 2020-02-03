@@ -169,6 +169,10 @@ h1,h2,h3,h4,h5,h6{
 .side{
   display: flex;
 }
+.SideBar {
+  max-height: 100%;
+  overflow-y: auto;
+}
 .SideBar li{
   list-style-type: none;
   text-decoration: none;
@@ -208,6 +212,7 @@ h1,h2,h3,h4,h5,h6{
   /* margin-left: 10cm; */
   padding: 1cm;
   display: block;
+  width: 100%;
   
 }
 #Config_Manager{
@@ -302,4 +307,7 @@ div.Test_Module p{margin-left: 0.5cm;}
 #DSAs{
   float: none;
   margin-left: 0.5cm;
+}
+.tier2 .collapse{
+  padding-left: 20px;
 }

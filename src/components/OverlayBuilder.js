@@ -23,15 +23,11 @@ export class OverlayBuilder extends Component {
                 <img src={OverlayFamily}/>
                 <p>Using Overlay Builder, you will create and maintain:</p>
                 <ul>
-                <li><a href='#Overlay'>Overlay</a> that help users address issues with their application environment.</li>
-                <li><a href='#Checks'>Checks</a> that provide the information necessary to identify a problem.</li>
-                <li><a href='#Actions'>Actions</a> that define the operations that may be performed to address the problem.</li>
-                <li><a href='#Global'>Global</a> that define values used by checks to store and transform data</li>
+                <li>Overlay that help users address issues with their application environment.</li>
+                <li>Checks that provide the information necessary to identify a problem.</li>
+                <li>Actions that define the operations that may be performed to address the problem.</li>
+                <li>Global that define values used by checks to store and transform data</li>
                 </ul>
-                <Overlay/>
-                <Checks/>
-                <Actions/>
-                <Global/>
                 </div>
             </div>
         )

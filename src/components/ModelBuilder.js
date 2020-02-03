@@ -11,8 +11,8 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 
 export class ModelBuilder extends Component {
     render() {
+        const {match} = this.props;
         return (
-            <Router>
             <div id="Model_Builder">
             <div className="Model">
             <br/>
@@ -23,29 +23,11 @@ export class ModelBuilder extends Component {
                 
                 <p>The distinction between models and overlays allows you to keep the models of your business separate from the business logic, which you can store in overlays. Thus, changes can be made to the data aggregation and component modeling layers with minimal effect on the business logic. And you can create multiple overlays for a single model, making it easy to add new business processes.</p>
                 <p>Using Model Builder, you can create and maintain:</p>
-                <ul>
-                <li><Link to={'/Model'}>Model</Link></li>
-                <li><Link to={'/Components'}>Components</Link></li>
-                <li><Link to={'/OptionSets'}>Option Sets</Link></li>
-                <li><Link to={'/Relationships'}>Relationships</Link></li>
-                <li><Link to={'/ModelTemplates'}>Model Templates</Link></li>
-                <li><Link to={'/PropertyTemplates'}>Property Templates</Link></li>
-                </ul>
                 <p>Model Builder will look like:</p>
-                <img width={1100} src={ModelBuilder3}/>
-                <Switch>
-                <Route path='/Model' component={Model}/>
-                <Route path='/Components' component={Components}/>
-                <Route path='/OptionSets' component={OptionSets}/>
-                <Route path='/Relationships' component={Relationships}/>
-                <Route path='/ModelTemplates' component={ModelTemplates}/>
-                <Route path='/PropertyTemplates' component={PropertyTemplate}/>
-                </Switch>
-                
+                <img width={1100} src={ModelBuilder3}/>               
                 
             </div>
             </div>
-            </Router>
         )
     }
 }

@@ -29,53 +29,101 @@ export class Sidebar extends Component {
             smp7: true,
             smp18: true,
             smp19: true,
-            name1: 'SMP7',
-            name2: 'SMP18',
-            name3: 'SMP19',
-            open: true
+            applicationConfig: false,
+            overlayBuilder: false,
+            modelBuilder: false,
+            configManager: false,
+            workflowBuilder: false
     }
     
     }
-    handleClick1=()=>{
-        this.setState({smp7: !this.state.smp7})
-    }
-    handleClick2=()=>{
-        this.setState({smp18: !this.state.smp18})  
-    }
-    handleClick3=()=>{  
-        this.setState({smp19: !this.state.smp19}) 
+    handleClick=(stateVal)=>{
+        this.setState({[stateVal]: !this.state[stateVal]})
     }
 
     render() {
         
-        return (
-            <Router>
-            <div className="SideBar">
-            <List
+      return (
+        <div className="SideBar">
+          <List
             component="nav"
             aria-labelledby="nested-list-subheader"
             className="root"
-          >
-          
-            <ListItem  onClick={this.handleClick1}>
-            <Link to='/SMP7'/>
-              <ListItemText primary="SMP 7" />
+          >          
+            <ListItem  onClick={this.handleClick.bind(this,'smp7')}>         
+              <ListItemText><Link to='/SMP7'>SMP 7</Link></ListItemText>
               {this.state.smp7 ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={this.state.smp7} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
+              <List className="tier1" component="div" disablePadding>
                 <ListItem button className="nested">
-                <ul>
-                <li><Link to='/ModelBuilder'>ModelBuilder</Link></li>
-                <li><Link to='/OverlayBuilder'>Overlay Builder</Link></li>
-                <li><Link to='/ConfigManager'>Configurartion Manager</Link></li>
-                <li><Link to='/Workflow'>Workflow Builder</Link></li>
-                <li><Link to='/CSS'>CSS</Link></li>
-                </ul>
+                  <List className="tier2">
+                    <ListItem onClick={this.handleClick.bind(this,'modelBuilder')}>         
+                      <Link to='/Model_Builder'>ModelBuilder</Link>    
+                    </ListItem>
+                    <Collapse className="collapse" in={this.state.modelBuilder}>
+                      <List>
+                        <ListItem><Link to={'/Model'}>Model</Link></ListItem>
+                        <ListItem><Link to={'/Components'}>Components</Link></ListItem>
+                        <ListItem><Link to={'/OptionSets'}>Option Sets</Link></ListItem>
+                        <ListItem><Link to={'/Relationships'}>Relationships</Link></ListItem>
+                        <ListItem><Link to={'/ModelTemplates'}>Model Templates</Link></ListItem>
+                        <ListItem><Link to={'/PropertyTemplates'}>Property Templates</Link></ListItem>
+                      </List>     
+                    </Collapse>
+                    <ListItem onClick={this.handleClick.bind(this,'overlayBuilder')}>
+                      <Link to='/OverlayBuilder'>Overlay Builder</Link>
+                    </ListItem>
+                    <Collapse className="collapse" in={this.state.overlayBuilder}>
+                      <List>
+                        <ListItem><Link to={'/Overlay'}>Overlay</Link></ListItem>
+                        <ListItem><Link to={'/Checks'}>Checks</Link></ListItem>
+                        <ListItem><Link to={'/Actions'}>Actions</Link></ListItem>
+                        <ListItem><Link to={'/Global'}>Global</Link></ListItem>
+                      </List>     
+                    </Collapse>
+                    <ListItem onClick={this.handleClick.bind(this, 'configManager')}><Link to='/Config_Manager'>Configurartion Manager</Link></ListItem>
+                    <Collapse className="collapse" in={this.state.configManager}>
+                      <List className="tier3">
+                        <ListItem onClick={this.handleClick.bind(this,'applicationConfig')}><Link to={"Application_Config"}>Application Configuration</Link></ListItem>
+                        <Collapse in={this.state.applicationConfig} className="collapse">
+                          <List>
+                            <ListItem><Link to='/Upload_New_Configuration'>Upload New Configuration</Link></ListItem>
+                            <ListItem><Link to='/Application_Properties'>Application Properties</Link></ListItem>
+                            <ListItem><Link to='/Role_Based_Properties'>Role Based Properties</Link></ListItem>
+                            <ListItem><Link to='/User_Input'>User_Input</Link></ListItem>
+                            <ListItem><Link to='/Result_Analyses'>Result_Analyses</Link></ListItem>
+                            <ListItem><Link to='/Test_Module'>Test_Module</Link></ListItem>
+                            <ListItem><Link to='/Endpoint_Operations'>Endpoint_Operations</Link></ListItem>
+                            <ListItem><Link to='/Workflow_Modules'>Workflow_Modules</Link></ListItem>
+                            <ListItem><Link to='/Test_Group'>Test_Group</Link></ListItem>
+                            <ListItem><Link to='/Startup_Test_Group'>Startup_Test_Group</Link></ListItem>
+                            <ListItem><Link to='/Service_Policies'>Service_Policies</Link></ListItem>
+                            <ListItem><Link to='/Resource_Files'>Resource_Files</Link></ListItem>
+                            <ListItem><Link to='/DSAs'>Extensions / DSAs</Link></ListItem>
+                          </List>
+                        </Collapse>
+                        <ListItem><Link to={"Envi_Config"}>Environment Configuration</Link></ListItem>
+                        <ListItem><Link to="Version_Manager">Version Manager</Link></ListItem>
+                        <ListItem><Link to="CSC_Config">CSC Configuration</Link></ListItem>
+                        <ListItem><Link to="KMP">KMP</Link></ListItem>
+                        <ListItem><Link to="Users">Users</Link></ListItem>
+                        <ListItem><Link to="Schedules">Schedules</Link></ListItem>
+                      </List>
+                    </Collapse>
+                    <ListItem onClick={this.handleClick.bind(this, 'workflowBuilder')}><Link to='/Workflow'>Workflow Builder</Link></ListItem>
+                    <Collapse in={this.state.workflowBuilder} className="collapse">
+                      <List>
+                        <ListItem><Link to="/Business_Process">Business Process Workflow</Link></ListItem>
+                        <ListItem><Link to="/Interactive_Procerss">Interactive Workflow</Link></ListItem>
+                      </List>
+                    </Collapse>
+                    <ListItem><Link to='/CSS'>CSS</Link></ListItem>
+                  </List>
                 </ListItem>
               </List>
             </Collapse>
-            <ListItem button onClick={this.handleClick2}>
+            <ListItem button onClick={this.handleClick.bind(this,'smp18')}>
               <ListItemText primary="SMP 18" />
               {this.state.smp18 ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -86,39 +134,9 @@ export class Sidebar extends Component {
                 </ListItem>
               </List>
             </Collapse>
-            <ListItem button>
-              <ListItemIcon>
-                <DraftsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Drafts" />
-            </ListItem>
-            <ListItem button onClick={this.handleClick}>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="Inbox" />
-              {this.state.open ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={this.state.open} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItem button className="nested">
-                  <ListItemIcon>
-                    <StarBorder />
-                  </ListItemIcon>
-                  <ListItemText primary="Starred" />
-                </ListItem>
-              </List>
-            </Collapse>
+            
           </List>
-          <Switch>
-          <Route path='/ModelBuilder' component={ModelBuilder}/>
-          <Route path='/OverlayBuilder' component={OverlayBuilder}/>
-          <Route path='/ConfigManager' component={ConfigManager}/>
-          <Route path='/Workflow' component={Workflow}/>
-          <Route path='/CSS' component={Css}/>
-          </Switch>
             </div>
-            </Router>
         )
     }
 }

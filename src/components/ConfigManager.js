@@ -13,29 +13,13 @@ import Application_Properties from './config/Application_Properties'
 export class ConfigManager extends Component {
     render() {
         return (
-            <Router>
             <div id="Config_Manager">
                 <h1>Configuration Manager</h1>
                 <p>SMP configuration manager helps you to configure your model and overlay and make it available to CSC and Workflows.</p>
                 <p>The Configuration manager will looks like,</p>
                 <img src={ConfigMan}/>
                 <p>The Content in Configuration Managers are,</p>
-                <ul>
-                <li><a href="#Application_Config">Application Configuration</a></li>
-                <li><a href="#Envi_Config">Environment Configuration</a></li>
-                <li><a href="#Version_Manager">Version Manager</a></li>
-                <li><a href="#CSC_Config">CSC Configuration</a></li>
-                <li><a href="#KMP">KMP</a></li>
-                <li><a href="#Users">Users</a></li>
-                <li><a href="#Schedules">Schedules</a></li>
-                </ul>
-                <Application_Config/>
-                <Envi_Config/>
-                <Version_Manager/>
-                <CSC_Config/>
-                <KMP/>
-                <Users/>
-                <Schedules/>
+                
                 
                {/* <ul>
                 <li><Link to={'/Application_Config'} className="nav-link"> Application Configuration </Link></li>
@@ -58,7 +42,6 @@ export class ConfigManager extends Component {
               
              
             </div>
-            </Router>
         )
     }
 }

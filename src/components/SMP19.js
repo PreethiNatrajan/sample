@@ -12,7 +12,7 @@ export class SMP19 extends Component {
             <div id="SMP19">
                 <h1>SMP</h1>
             <p>Service Management Platform (SMP) is a comprehensive toolset and action engine for customer experience management. With SMP, service providers gain the following:</p>
-            <h3>The Content of SMP7 are,</h3>
+            <h3>The Content of SMP19 are,</h3>
             <ul>
                 <li><a href="#Config_Manager">Configuration Manager</a></li>
                 <li><a href="#Workflow">Workflow</a></li>
@@ -24,7 +24,9 @@ export class SMP19 extends Component {
             <ConfigManager/>
             <Workflow/>
             <Css/>
-            <SiteBuilder/>
+            <SiteBuilder/> 
+            {/* 
+            */}
             </div>
         )
     }
